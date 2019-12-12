@@ -21,8 +21,11 @@ public final class ManipulateTables {
 		return manager.find(Student.class, longId);
 	}
 	
-	public static void updateStudent(Student student) {
-		
+	public static void updateStudent(EntityManager manager, Student student) {
+			
+		manager.getTransaction().begin();
+		manager.merge(student);
+		manager.getTransaction().commit();
 	}
 	
 	public static void deleteStudent(Student student) {

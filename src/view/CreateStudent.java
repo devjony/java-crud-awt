@@ -51,12 +51,20 @@ public class CreateStudent extends JPanel {
 				student.setEmail(emailTextField.getText());
 				student.setCourse(courseTextField.getText());
 				
-				ManipulateTables.createStudent(manager, student);
-				
-				JOptionPane.showMessageDialog(null, student.getName() + " successfully registered");
-				nameTextField.setText("");
-				emailTextField.setText("");
-				courseTextField.setText("");
+				if(student.getName().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Student name cannot be empty.");
+				} else if(student.getEmail().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Student e-mail cannot be empty.");
+				} else if(student.getCourse().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Student course cannot be empty.");
+				} else {
+					ManipulateTables.createStudent(manager, student);
+					
+					JOptionPane.showMessageDialog(null, student.getName() + " successfully registered.");
+					nameTextField.setText("");
+					emailTextField.setText("");
+					courseTextField.setText("");
+				}
 			}
 		});
 		btnSave.setBounds(183, 190, 89, 23);

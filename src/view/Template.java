@@ -85,7 +85,7 @@ public class Template {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				frmCollegeSystem.getContentPane().removeAll();
-				ReadStudent readPanel = new ReadStudent(manager);
+				ReadAndUpdateStudent readPanel = new ReadAndUpdateStudent(manager);
 				frmCollegeSystem.getContentPane().add(readPanel);
 				frmCollegeSystem.getContentPane().repaint();
 				frmCollegeSystem.getContentPane().revalidate();
