@@ -22,13 +22,17 @@ public final class ManipulateTables {
 	}
 	
 	public static void updateStudent(EntityManager manager, Student student) {
-			
 		manager.getTransaction().begin();
 		manager.merge(student);
 		manager.getTransaction().commit();
 	}
 	
-	public static void deleteStudent(Student student) {
+	public static void deleteStudent(EntityManager manager, Long longId) {
 		
+		Student student =  manager.find(Student.class, longId);
+		
+		manager.getTransaction().begin();
+		manager.remove(student);
+		manager.getTransaction().commit();
 	}
 }

@@ -86,7 +86,7 @@ public class CreateStudent extends JPanel {
 		courseTextField.setColumns(10);
 		
 		JLabel createStudentTitleLabel = new JLabel("Create Student");
-		createStudentTitleLabel.setBounds(180, 18, 106, 14);
+		createStudentTitleLabel.setBounds(182, 18, 106, 14);
 		add(createStudentTitleLabel);
 		
 		JLabel idLabel = new JLabel("ID:");

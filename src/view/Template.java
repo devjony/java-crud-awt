@@ -80,12 +80,12 @@ public class Template {
 		});
 		mnFile.add(mntmCreate);
 		
-		JMenuItem mntmRead = new JMenuItem("Read / Update");
+		JMenuItem mntmRead = new JMenuItem("Read");
 		mntmRead.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				frmCollegeSystem.getContentPane().removeAll();
-				ReadAndUpdateStudent readPanel = new ReadAndUpdateStudent(manager);
+				ReadStudents readPanel = new ReadStudents(manager);
 				frmCollegeSystem.getContentPane().add(readPanel);
 				frmCollegeSystem.getContentPane().repaint();
 				frmCollegeSystem.getContentPane().revalidate();
@@ -93,12 +93,25 @@ public class Template {
 		});
 		mnFile.add(mntmRead);
 		
+		JMenuItem mntmUpdate = new JMenuItem("Update");
+		mntmUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				frmCollegeSystem.getContentPane().removeAll();
+				UpdateStudent updatePanel = new UpdateStudent(manager);
+				frmCollegeSystem.getContentPane().add(updatePanel);
+				frmCollegeSystem.getContentPane().repaint();
+				frmCollegeSystem.getContentPane().revalidate();
+			}
+		});
+		mnFile.add(mntmUpdate);
+		
 		JMenuItem mntmDelete = new JMenuItem("Delete");
 		mntmDelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				frmCollegeSystem.getContentPane().removeAll();
-				DeleteStudent deletePanel = new DeleteStudent();
+				DeleteStudent deletePanel = new DeleteStudent(manager);
 				frmCollegeSystem.getContentPane().add(deletePanel);
 				frmCollegeSystem.getContentPane().repaint();
 				frmCollegeSystem.getContentPane().revalidate();
