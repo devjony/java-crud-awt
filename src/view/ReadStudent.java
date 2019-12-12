@@ -22,47 +22,50 @@ public class ReadStudent extends JPanel {
 		setLayout(null);
 		
 		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(138, 68, 48, 14);
+		lblId.setBounds(134, 50, 48, 14);
 		add(lblId);
 		
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(138, 110, 48, 14);
+		lblName.setBounds(134, 92, 48, 14);
 		add(lblName);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(138, 154, 48, 14);
+		lblEmail.setBounds(134, 136, 48, 14);
 		add(lblEmail);
 		
 		JLabel lblCourse = new JLabel("Course:");
-		lblCourse.setBounds(138, 189, 48, 14);
+		lblCourse.setBounds(134, 171, 48, 14);
 		add(lblCourse);
 		
-		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(168, 231, 89, 23);
-		add(btnSave);
-		
 		textField = new JTextField();
-		textField.setBounds(196, 65, 96, 20);
+		textField.setBounds(192, 47, 96, 20);
 		add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(196, 107, 96, 20);
+		textField_1.setEditable(false);
+		textField_1.setBounds(192, 89, 96, 20);
 		add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(196, 147, 96, 20);
+		textField_2.setEditable(false);
+		textField_2.setBounds(192, 129, 96, 20);
 		add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(196, 187, 96, 20);
+		textField_3.setEditable(false);
+		textField_3.setBounds(192, 169, 96, 20);
 		add(textField_3);
 		textField_3.setColumns(10);
 		
 		JLabel lblCreateStudent = new JLabel("Read Student");
 		lblCreateStudent.setBounds(168, 22, 106, 14);
 		add(lblCreateStudent);
+		
+		JButton btnRead = new JButton("Read");
+		btnRead.setBounds(168, 200, 89, 23);
+		add(btnRead);
 	}
 }

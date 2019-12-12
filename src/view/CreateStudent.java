@@ -5,15 +5,20 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import controller.ManipulateTables;
+import model.Student;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 public class CreateStudent extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6362883120008410026L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField nameTextField;
+	private JTextField emailTextField;
+	private JTextField courseTextField;
 
 	/**
 	 * Create the panel.
@@ -21,48 +26,51 @@ public class CreateStudent extends JPanel {
 	public CreateStudent() {
 		setLayout(null);
 		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(138, 68, 48, 14);
-		add(lblId);
+		JLabel nameLabel = new JLabel("Name:");
+		nameLabel.setBounds(138, 67, 48, 14);
+		add(nameLabel);
 		
-		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(138, 110, 48, 14);
-		add(lblName);
+		JLabel emailLabel = new JLabel("E-mail:");
+		emailLabel.setBounds(138, 108, 48, 14);
+		add(emailLabel);
 		
-		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(138, 154, 48, 14);
-		add(lblEmail);
-		
-		JLabel lblCourse = new JLabel("Course:");
-		lblCourse.setBounds(138, 189, 48, 14);
-		add(lblCourse);
+		JLabel courseLabel = new JLabel("Course:");
+		courseLabel.setBounds(138, 144, 48, 14);
+		add(courseLabel);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(168, 231, 89, 23);
+		btnSave.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Student student = new Student();
+				
+				student.setName(nameTextField.getText());
+				student.setEmail(emailTextField.getText());
+				student.setCourse(courseTextField.getText());
+				
+				ManipulateTables.createStudent(student);
+			}
+		});
+		btnSave.setBounds(168, 189, 89, 23);
 		add(btnSave);
 		
-		textField = new JTextField();
-		textField.setBounds(196, 65, 96, 20);
-		add(textField);
-		textField.setColumns(10);
+		nameTextField = new JTextField();
+		nameTextField.setBounds(196, 64, 120, 20);
+		add(nameTextField);
+		nameTextField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(196, 107, 96, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		emailTextField = new JTextField();
+		emailTextField.setBounds(196, 105, 120, 20);
+		add(emailTextField);
+		emailTextField.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(196, 147, 96, 20);
-		add(textField_2);
-		textField_2.setColumns(10);
+		courseTextField = new JTextField();
+		courseTextField.setBounds(196, 141, 120, 20);
+		add(courseTextField);
+		courseTextField.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(196, 187, 96, 20);
-		add(textField_3);
-		textField_3.setColumns(10);
-		
-		JLabel lblCreateStudent = new JLabel("Create Student");
-		lblCreateStudent.setBounds(168, 22, 106, 14);
-		add(lblCreateStudent);
+		JLabel createStudentTitleLabel = new JLabel("Create Student");
+		createStudentTitleLabel.setBounds(168, 22, 106, 14);
+		add(createStudentTitleLabel);
 	}
 }
