@@ -16,8 +16,10 @@ public final class ManipulateTables {
 		manager.getTransaction().commit();
 	}
 	
-	public static void readStudent(Student student) {
+	public static Student readStudent(EntityManager manager, String stringId) {
 		
+		Long longId = Long.parseLong(stringId);
+		return manager.find(Student.class, longId);
 	}
 	
 	public static void updateStudent(Student student) {

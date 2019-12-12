@@ -2,70 +2,96 @@ package view;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.persistence.EntityManager;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import controller.ManipulateTables;
+import model.Student;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ReadStudent extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6362883120008410026L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField idTextField;
+	private JTextField nameTextField;
+	private JTextField emailTextField;
+	private JTextField courseTextField;
 
 	/**
 	 * Create the panel.
 	 */
-	public ReadStudent() {
+	public ReadStudent(EntityManager manager) {
 		setLayout(null);
 		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(134, 50, 48, 14);
-		add(lblId);
+		JLabel idLabel = new JLabel("ID:");
+		idLabel.setBounds(134, 50, 48, 14);
+		add(idLabel);
 		
-		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(134, 92, 48, 14);
-		add(lblName);
+		JLabel nameLabel = new JLabel("Name:");
+		nameLabel.setBounds(134, 81, 48, 14);
+		add(nameLabel);
 		
-		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(134, 136, 48, 14);
-		add(lblEmail);
+		JLabel emailLabel = new JLabel("E-mail:");
+		emailLabel.setBounds(134, 117, 48, 14);
+		add(emailLabel);
 		
-		JLabel lblCourse = new JLabel("Course:");
-		lblCourse.setBounds(134, 171, 48, 14);
-		add(lblCourse);
+		JLabel courseLabel = new JLabel("Course:");
+		courseLabel.setBounds(134, 148, 48, 14);
+		add(courseLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(192, 47, 96, 20);
-		add(textField);
-		textField.setColumns(10);
+		idTextField = new JTextField();
+		idTextField.setBounds(192, 47, 48, 20);
+		add(idTextField);
+		idTextField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(192, 89, 96, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		nameTextField = new JTextField();
+		nameTextField.setEditable(false);
+		nameTextField.setBounds(192, 78, 96, 20);
+		add(nameTextField);
+		nameTextField.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(192, 129, 96, 20);
-		add(textField_2);
-		textField_2.setColumns(10);
+		emailTextField = new JTextField();
+		emailTextField.setEditable(false);
+		emailTextField.setBounds(192, 114, 96, 20);
+		add(emailTextField);
+		emailTextField.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBounds(192, 169, 96, 20);
-		add(textField_3);
-		textField_3.setColumns(10);
+		courseTextField = new JTextField();
+		courseTextField.setEditable(false);
+		courseTextField.setBounds(192, 145, 96, 20);
+		add(courseTextField);
+		courseTextField.setColumns(10);
 		
-		JLabel lblCreateStudent = new JLabel("Read Student");
-		lblCreateStudent.setBounds(168, 22, 106, 14);
-		add(lblCreateStudent);
+		JLabel readStudentTitleLabel = new JLabel("Read Student");
+		readStudentTitleLabel.setBounds(182, 11, 106, 14);
+		add(readStudentTitleLabel);
 		
 		JButton btnRead = new JButton("Read");
-		btnRead.setBounds(168, 200, 89, 23);
+		btnRead.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				try{
+					Student student = ManipulateTables.readStudent(manager, idTextField.getText());
+					nameTextField.setText(student.getName());
+					emailTextField.setText(student.getEmail());
+					courseTextField.setText(student.getCourse());
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Student not found");
+					idTextField.setText("");
+					nameTextField.setText("");
+					emailTextField.setText("");
+					courseTextField.setText("");
+				}
+			}
+		});
+		btnRead.setBounds(168, 187, 89, 23);
 		add(btnRead);
 	}
 }
