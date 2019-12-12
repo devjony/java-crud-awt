@@ -2,19 +2,24 @@ package view;
 
 import java.awt.EventQueue;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
-
-import controller.BuildTables;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Template {
 
 	private JFrame frmCollegeSystem;
-
+	private static EntityManagerFactory factory;
+	private static EntityManager manager;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -36,10 +41,12 @@ public class Template {
 	 */
 	public Template() {
 		try {
-			new BuildTables();
+			factory = Persistence.createEntityManagerFactory("student");
+			manager = factory.createEntityManager();
 			initialize();
 		} catch (Exception e) {
-			System.out.println("Failed to connect to database\n" + e);
+			JOptionPane.showMessageDialog(null, "Failed to connect to database\n");
+			e.printStackTrace();
 		}
 	}
 
@@ -63,7 +70,9 @@ public class Template {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				frmCollegeSystem.getContentPane().removeAll();
-				CreateStudent createPanel = new CreateStudent();
+				
+				CreateStudent createPanel = new CreateStudent(manager);
+				
 				frmCollegeSystem.getContentPane().add(createPanel);
 				frmCollegeSystem.getContentPane().repaint();
 				frmCollegeSystem.getContentPane().revalidate();
@@ -114,6 +123,8 @@ public class Template {
 		mntmExit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				factory.close();
+				manager.close();
 				System.exit(0);
 			}
 		});

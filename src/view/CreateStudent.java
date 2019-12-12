@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.persistence.EntityManager;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -23,7 +25,7 @@ public class CreateStudent extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CreateStudent() {
+	public CreateStudent(EntityManager manager) {
 		setLayout(null);
 		
 		JLabel nameLabel = new JLabel("Name:");
@@ -48,7 +50,12 @@ public class CreateStudent extends JPanel {
 				student.setEmail(emailTextField.getText());
 				student.setCourse(courseTextField.getText());
 				
-				ManipulateTables.createStudent(student);
+				ManipulateTables.createStudent(manager, student);
+				
+				JOptionPane.showMessageDialog(null, student.getName() + " successfully registered");
+				nameTextField.setText("");
+				emailTextField.setText("");
+				courseTextField.setText("");
 			}
 		});
 		btnSave.setBounds(168, 189, 89, 23);
