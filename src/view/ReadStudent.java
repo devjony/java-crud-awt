@@ -30,47 +30,52 @@ public class ReadStudent extends JPanel {
 		setLayout(null);
 		
 		JLabel idLabel = new JLabel("ID:");
-		idLabel.setBounds(134, 50, 48, 14);
+		idLabel.setBounds(125, 54, 48, 14);
 		add(idLabel);
 		
 		JLabel nameLabel = new JLabel("Name:");
-		nameLabel.setBounds(134, 81, 48, 14);
+		nameLabel.setBounds(125, 87, 48, 14);
 		add(nameLabel);
 		
 		JLabel emailLabel = new JLabel("E-mail:");
-		emailLabel.setBounds(134, 117, 48, 14);
+		emailLabel.setBounds(125, 120, 48, 14);
 		add(emailLabel);
 		
 		JLabel courseLabel = new JLabel("Course:");
-		courseLabel.setBounds(134, 148, 48, 14);
+		courseLabel.setBounds(125, 153, 48, 14);
 		add(courseLabel);
 		
 		idTextField = new JTextField();
-		idTextField.setBounds(192, 47, 48, 20);
+		idTextField.setBounds(183, 52, 48, 20);
 		add(idTextField);
 		idTextField.setColumns(10);
 		
 		nameTextField = new JTextField();
 		nameTextField.setEditable(false);
-		nameTextField.setBounds(192, 78, 96, 20);
+		nameTextField.setBounds(183, 85, 135, 20);
 		add(nameTextField);
 		nameTextField.setColumns(10);
 		
 		emailTextField = new JTextField();
 		emailTextField.setEditable(false);
-		emailTextField.setBounds(192, 114, 96, 20);
+		emailTextField.setBounds(183, 118, 135, 20);
 		add(emailTextField);
 		emailTextField.setColumns(10);
 		
 		courseTextField = new JTextField();
 		courseTextField.setEditable(false);
-		courseTextField.setBounds(192, 145, 96, 20);
+		courseTextField.setBounds(183, 151, 135, 20);
 		add(courseTextField);
 		courseTextField.setColumns(10);
 		
 		JLabel readStudentTitleLabel = new JLabel("Read Student");
-		readStudentTitleLabel.setBounds(182, 11, 106, 14);
+		readStudentTitleLabel.setBounds(182, 18, 106, 14);
 		add(readStudentTitleLabel);
+		
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setEnabled(false);
+		btnUpdate.setBounds(229, 190, 89, 23);
+		add(btnUpdate);
 		
 		JButton btnRead = new JButton("Read");
 		btnRead.addMouseListener(new MouseAdapter() {
@@ -82,6 +87,7 @@ public class ReadStudent extends JPanel {
 					nameTextField.setText(student.getName());
 					emailTextField.setText(student.getEmail());
 					courseTextField.setText(student.getCourse());
+					btnUpdate.setEnabled(true);
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, "Student not found");
 					idTextField.setText("");
@@ -91,7 +97,8 @@ public class ReadStudent extends JPanel {
 				}
 			}
 		});
-		btnRead.setBounds(168, 187, 89, 23);
+		btnRead.setBounds(125, 190, 89, 23);
 		add(btnRead);
+		
 	}
 }

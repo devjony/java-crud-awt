@@ -21,6 +21,7 @@ public class CreateStudent extends JPanel {
 	private JTextField nameTextField;
 	private JTextField emailTextField;
 	private JTextField courseTextField;
+	private JTextField idTextField;
 
 	/**
 	 * Create the panel.
@@ -29,15 +30,15 @@ public class CreateStudent extends JPanel {
 		setLayout(null);
 		
 		JLabel nameLabel = new JLabel("Name:");
-		nameLabel.setBounds(138, 67, 48, 14);
+		nameLabel.setBounds(125, 87, 48, 14);
 		add(nameLabel);
 		
 		JLabel emailLabel = new JLabel("E-mail:");
-		emailLabel.setBounds(138, 108, 48, 14);
+		emailLabel.setBounds(125, 120, 48, 14);
 		add(emailLabel);
 		
 		JLabel courseLabel = new JLabel("Course:");
-		courseLabel.setBounds(138, 144, 48, 14);
+		courseLabel.setBounds(125, 153, 48, 14);
 		add(courseLabel);
 		
 		JButton btnSave = new JButton("Save");
@@ -58,26 +59,36 @@ public class CreateStudent extends JPanel {
 				courseTextField.setText("");
 			}
 		});
-		btnSave.setBounds(168, 189, 89, 23);
+		btnSave.setBounds(183, 190, 89, 23);
 		add(btnSave);
 		
 		nameTextField = new JTextField();
-		nameTextField.setBounds(196, 64, 120, 20);
+		nameTextField.setBounds(183, 85, 135, 20);
 		add(nameTextField);
 		nameTextField.setColumns(10);
 		
 		emailTextField = new JTextField();
-		emailTextField.setBounds(196, 105, 120, 20);
+		emailTextField.setBounds(183, 118, 135, 20);
 		add(emailTextField);
 		emailTextField.setColumns(10);
 		
 		courseTextField = new JTextField();
-		courseTextField.setBounds(196, 141, 120, 20);
+		courseTextField.setBounds(183, 151, 135, 20);
 		add(courseTextField);
 		courseTextField.setColumns(10);
 		
 		JLabel createStudentTitleLabel = new JLabel("Create Student");
-		createStudentTitleLabel.setBounds(168, 22, 106, 14);
+		createStudentTitleLabel.setBounds(180, 18, 106, 14);
 		add(createStudentTitleLabel);
+		
+		JLabel idLabel = new JLabel("ID:");
+		idLabel.setBounds(125, 54, 48, 14);
+		add(idLabel);
+		
+		idTextField = new JTextField();
+		idTextField.setEditable(false);
+		idTextField.setColumns(10);
+		idTextField.setBounds(183, 52, 48, 20);
+		add(idTextField);
 	}
 }

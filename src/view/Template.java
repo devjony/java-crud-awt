@@ -80,7 +80,7 @@ public class Template {
 		});
 		mnFile.add(mntmCreate);
 		
-		JMenuItem mntmRead = new JMenuItem("Read");
+		JMenuItem mntmRead = new JMenuItem("Read / Update");
 		mntmRead.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -92,19 +92,6 @@ public class Template {
 			}
 		});
 		mnFile.add(mntmRead);
-		
-		JMenuItem mntmUpdate = new JMenuItem("Update");
-		mntmUpdate.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				frmCollegeSystem.getContentPane().removeAll();
-				UpdateStudent updatePanel = new UpdateStudent();
-				frmCollegeSystem.getContentPane().add(updatePanel);
-				frmCollegeSystem.getContentPane().repaint();
-				frmCollegeSystem.getContentPane().revalidate();
-			}
-		});
-		mnFile.add(mntmUpdate);
 		
 		JMenuItem mntmDelete = new JMenuItem("Delete");
 		mntmDelete.addMouseListener(new MouseAdapter() {

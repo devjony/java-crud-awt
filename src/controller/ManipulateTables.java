@@ -17,7 +17,6 @@ public final class ManipulateTables {
 	}
 	
 	public static Student readStudent(EntityManager manager, String stringId) {
-		
 		Long longId = Long.parseLong(stringId);
 		return manager.find(Student.class, longId);
 	}
